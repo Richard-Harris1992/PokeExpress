@@ -23,7 +23,6 @@ app.get('/pokemon', (req, res) => {
 });
 
 app.get('/pokemon/:id', (req, res) => {
-    res.send(`<h2>${req.params.id}</h2>`);
+    res.send(req.params.id);
 });
-
 app.listen(port, () => console.log('3000'))
