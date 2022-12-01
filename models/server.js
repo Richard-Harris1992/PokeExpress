@@ -10,3 +10,8 @@ const port = 3000;
 //Edit
 //Show
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Pokemon App!');
+});
+
+app.listen(port, () => console.log('3000'))
