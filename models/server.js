@@ -22,4 +22,8 @@ app.get('/pokemon', (req, res) => {
     res.render('Index', {poke : pokemon});
 });
 
+app.get('/pokemon/:id', (req, res) => {
+    res.send(`<h2>${req.params.id}</h2>`);
+});
+
 app.listen(port, () => console.log('3000'))
