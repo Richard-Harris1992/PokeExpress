@@ -4,7 +4,7 @@ class Show extends React.Component {
     render() {
         const pokemon = this.props.poke;
         const addJPG = src => {
-            if(!src.includes('.jpg')) {
+            if(!src.endsWith('.jpg')) {
                 src += '.jpg';
             }
             return src;
