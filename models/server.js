@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pokemon', (req, res) => {
-    res.render('Index')
+    res.render('Index', {poke : pokemon});
 });
 
 app.listen(port, () => console.log('3000'))
