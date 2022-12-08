@@ -38,11 +38,7 @@ app.get('/pokemon/new', (req, res) => {
 
 app.get('/pokemon/:id', (req, res) => {
     Pokemon.findById(req.params.id, (err, foundPokemon) => {
-        console.log(foundPokemon);
-        console.log(req.params.id)
-        res.render('Show', {
-            pokemon: foundPokemon,
-        });
+        res.render('Show', {pokemon: foundPokemon});
     });
 });
 
