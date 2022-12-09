@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT||3000;
 const mongoose = require('mongoose');
 const Pokemon = require('./models/pokemon');
 
@@ -27,7 +27,6 @@ app.get('/', (req, res) => {
 
 app.get('/pokemon', (req, res) => {
     Pokemon.find({}, (err, pokemonItems) => {
-      
     res.render('Index', { pokemon : pokemonItems});
     });
 });
