@@ -8,7 +8,6 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const db = mongoose.connection;
 // Set up Express Middleware
-mongoose.connect(MONGO_URI);
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 db.once('open', ()=> {
     console.log('Connected to MongoDB')
@@ -20,7 +19,7 @@ mongoose.set('strictQuery', true);
 
 // Connection Error/Success -- Define callback functions for various events
 db.on("error", (err) => console.log(err.message + " is mongod not running?"));
-db.on("open", () => console.log("mongo connected: ", MONGO_URI))
+db.on("open", () => console.log("mongo connected: "))
 db.on("close", () => console.log("mongo disconnected"))
 
 app.use(express.urlencoded({extended: false}));
@@ -29,7 +28,7 @@ app.engine('jsx', require('express-react-views').createEngine());
 
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Pokemon App!');
+    res.send('Welcome to the Pokemon App!' );
 });
 
 app.get('/pokemon', (req, res) => {
