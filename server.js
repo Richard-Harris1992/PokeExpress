@@ -4,21 +4,28 @@ const app = express();
 const port = process.env.PORT||3000;
 const mongoose = require('mongoose');
 const Pokemon = require('./models/pokemon');
+const MONGO_URI = env.process.MONGO_URI
 
-
-app.use(express.urlencoded({extended: false}));
-
-
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
-
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection;
+// Set up Express Middleware
+mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+db.once('open', ()=> {
+    console.log('Connected to MongoDB')
+})
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongo')
 })
 mongoose.set('strictQuery', true);
-const db = mongoose.connection;
 
+// Connection Error/Success -- Define callback functions for various events
+db.on("error", (err) => console.log(err.message + " is mongod not running?"));
+db.on("open", () => console.log("mongo connected: ", MONGO_URI))
+db.on("close", () => console.log("mongo disconnected"))
+
+app.use(express.urlencoded({extended: false}));
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 
 app.get('/', (req, res) => {
