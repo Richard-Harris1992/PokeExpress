@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT||3000;
 const mongoose = require('mongoose');
 const Pokemon = require('./models/pokemon');
-const MONGO_URI = env.process.MONGO_URI
+const MONGO_URI = process.env.MONGO_URI;
 
 const db = mongoose.connection;
 // Set up Express Middleware
