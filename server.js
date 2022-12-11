@@ -7,8 +7,6 @@ const Pokemon = require('./models/pokemon');
 
 
 app.use(express.urlencoded({extended: false}));
-
-
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
@@ -17,7 +15,6 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo')
 })
 mongoose.set('strictQuery', true);
-const db = mongoose.connection;
 
 
 
