@@ -14,7 +14,6 @@ const style = {
 
 class Index extends React.Component {
     render() {
-        console.log(this.props);
         return (
         <div> 
             <h1 style={style}> See All The Pokemon! </h1>
