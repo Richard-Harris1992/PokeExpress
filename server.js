@@ -6,7 +6,7 @@ const port = 3000;
 const mongoose = require('mongoose');
 const Pokemon = require('./models/pokemon');
 
-//Index Delete Update Create Edit Show
+
 app.use(override("_method"));
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'jsx');
